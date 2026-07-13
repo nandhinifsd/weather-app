@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Report</title>
+    <link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        body{
+           
+            
+            min-height: 100vh;
+            min-width: 60%;
+              display:flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .weatherform{
+            background-color:transparent;
+             background:#22C1C3;
+            background: linear-gradient(0deg,rgb(202, 205, 205) 0%, rgb(11, 8, 0) 100%);
+            background-repeat: no-repeat;
+            background-size: cover;
+            backdrop-filter:blur(50px);
+            -webkit-backdrop-filter:blur(20px);
+            width:40%;
+            min-height:95vh;
+            color:white;
+            border-radius: 20px;
+            display:flex;
+            flex-direction:column;
+            box-sizing: border-box;
+        }
+            
+         .weatherform   h1{
+                margin: 3% 2%;
+                padding:1%;
+            }
+            .input-container{
+                background-color:transparent;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+                margin:3% 2%;
+                padding:2%;
+            }
+            .input-container1{
+                margin:3% 2% 1% 2%;
+                padding:1%;
+                height:auto;
+                width:95%;
+                display:flex;
+                flex-direction: column;
+            }
+            .input{
+                border-radius: 10px;
+                border:none;
+                background-color: rgb(246, 245, 244);
+                margin:0% 2%;
+                padding:4%;
+                width:100%;
+                height:50px;
+                font-size: x-large;
+            }
+            #suggestions{
+                width:100%;
+                height:auto;
+                 background-color: rgb(246, 245, 244);
+                  border:none;
+                   border-radius: 10px;
+                    margin:0.5% 2% 3% 2%;
+                    padding:1%;
+                     font-size:large;
+                     list-style-type: none;
+                     display:none;
+                     flex-direction: column;
+            }
+            #suggestions li{
+                font-size:medium;
+                color:black;
+                width:100%;
+            }
+            #suggestions li:hover{
+                background-color: #716c6c;
+                border-radius: 2px;
+            }
+            
+            #search{
+                border-radius: 50%;
+                border:none;
+                background-color:transparent;
+                color:white;
+                font-size: x-large;
+                margin:3% 0% 3% 1%;
+                padding:2%;
+                width:12%;
+                height:60px;
+                i{
+                    transition: 0.3s ease;
+                }
+                
+
+            }
+            #search:hover{
+                i{
+                    text-shadow: 5px 5px 5px #ac9f9f,
+                                    -5px -5px -5px rgba(0,0,0,0.15);
+                    transform: scale(1.1);
+    
+                }
+
+            }
+            #search:focus{
+                i{
+                     text-shadow: 5px 5px 5px #716c6c,
+                      -5px -5px -5px rgba(0,0,0,0.15);
+                transform: translateZ(1.05);
+                }
+            }
+            .display-container{
+                margin: 10% 5%;
+                padding:3%;
+                display:flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                height:auto;
+                 background: rgba(255, 255, 255, 0.15);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                box-sizing: border-box;
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                border-radius: 25px;
+                display:none;
+
+    box-shadow:
+        0 8px 32px rgba(0,0,0,0.2),
+        inset 0 1px 1px rgba(255,255,255,0.3);
+
+                img{
+                    height: 100px;
+                    width:100px;
+                }
+                h2{
+                    font-size:30px;
+                }
+                h1{
+                    font-size: 100px;
+                }
+                h3{
+                    font-size: 20px;
+                }
+                p{
+                    font-size: 18px;
+                }
+
+            }
+           
+          
+           
+        
+ .humidity_pressure_display{
+                display: flex;
+                flex-direction: row;
+                gap:20%;
+           
+                margin: 3% 2%;
+                padding:1%;
+                align-items: center;
+                justify-content: center;
+                width:80%;
+            }
+              
+                .humidity{
+                    font-size:20px;
+                    font-weight: bold;
+                }
+                .humidity_value{
+                    font-size:20px;
+                }
+           
+             
+                .pressure{
+                    font-size:20px;
+                     font-weight: bold;
+                }
+                .pressure_value{
+                    font-size:20px;
+                }
+            
+            @media(max-width:768px)
+            {
+               .weatherform{
+                width:100%;
+                max-height:100vh;
+                box-sizing: border-box;
+                margin: 2% 2%;
+               }
+                .weatherform   h1{
+                margin: 1% 2%;
+                padding:1%;
+            }
+             .display-container{
+                 margin: 2% 5%;
+                padding:1%;
+                height:fit-content;
+             }
+            
+              .display-container h1{
+                    font-size: 40px;
+                }
+                .display-container h2{
+                    font-size: 20px;
+                }
+             .display-container h3{
+                    font-size: 15px;
+                }
+              .display-container p{
+                    font-size: 12px;
+                }
+
+            .input-container{
+                height:auto;
+                margin:1% 5%;
+                padding:1%;
+            }
+              
+                .humidity{
+                    font-size:12px;
+                    font-weight: bold;
+                }
+                .humidity_value{
+                    font-size:12px;
+                }
+            
+             
+                .pressure{
+                    font-size:12px;
+                     font-weight: bold;
+                }
+                .pressure_value{
+                    font-size:12px;
+                }
+            }
+            
+             @media(min-width:768px) and (max-width:998px)
+            {
+               .weatherform{
+                width:100%;
+                height:auto;
+               
+               }
+                .weatherform  
+                 h1{
+                margin: 2% 2%;
+                padding:1%;
+            }
+             .display-container{
+                 margin: 1% 5%;
+                padding:1%;
+                height:auto;
+             }
+            
+              .display-container h1{
+                    font-size: 80px;
+                }
+                   .display-container h2{
+                    font-size: 30px;
+                }
+             .display-container h3{
+                    font-size: 15px;
+                }
+              .display-container p{
+                    font-size: 12px;
+                }
+
+            .input-container{
+                height:auto;
+                margin:1% 5%;
+                padding:1%;
+            }
+              
+                .humidity{
+                    font-size:12px;
+                    font-weight: bold;
+                }
+                .humidity_value{
+                    font-size:12px;
+                }
+            
+             
+                .pressure{
+                    font-size:12px;
+                     font-weight: bold;
+                }
+                .pressure_value{
+                    font-size:12px;
+                }
+            }
+            
+    </style>
+</head>
+<body>
+    <div class="weatherform">
+        <h1 align="center">Weather Report</h1>
+         <div class="display-container">
+          
+
+    </div>
+        <div class="input-container">
+         <div class="input-container1">  
+        <input type="text" placeholder="Enter city" class="input" id="cityname" spellcheck="false" onkeypress="selectdata()">
+        <ul id="suggestions"></ul></div> 
+        <button type="submit" placeholder="check" id="search"><i class="fas fa-search" id="searchIcon"></i></button></div>
+
+        
+       
+    <script>
+        let city=document.getElementById("cityname");
+        let display=document.querySelector(".display-container");
+        let submitbtn=document.getElementById("search");
+        let form=document.querySelector(".weatherform");
+        let suggest=document.querySelector("#suggestions");
+      
+        function selectdata()
+        {
+            console.log("entered selectdata");
+            if(city.value.length>=2)
+        {
+            let url1=`https://api.openweathermap.org/geo/1.0/direct?q=${city.value}&limit=5&appid=6d551f820f40d3a3a9ed30da44aa084a`;
+            fetch(url1)
+            .then(response=>response.json())
+            .then(data=>{
+                console.log(data);
+                suggest.innerHTML="";
+                for(let i=0;i<data.length;i++)
+            {
+                suggest.style.display="flex";
+                
+             let item=document.createElement("li");
+             item.innerHTML=data[i].name+", "+data[i].state;
+             suggest.appendChild(item);
+
+             item.addEventListener("click",function(){
+                city.value=item.innerText;
+                item.style.display="none";
+                suggest.style.display="none";
+             });
+             return; 
+        
+            }
+               
+            })
+        }
+        }
+       
+        submitbtn.addEventListener("click",function(){
+            display.style.display="flex";
+           console.log(city.value);
+            let url=`https://api.openweathermap.org/data/2.5/weather?q=${city.value}&appid=6d551f820f40d3a3a9ed30da44aa084a&units=metric`;
+            fetch(url)
+            .then((response=>response.json()))
+                .then(data=>{
+                    console.log(data)
+                     display.innerHTML=`<h2>${city.value}</h2><img id="wicon" alt="weatherIcon"></i>
+            <h1 class="temp-disp">${data.main.temp}°C</h1>
+            <h3 class="weather-desc">${data.weather[0].description}</h3>
+            <p class="Temp-HL">High:${data.main.temp_max}°C Low:${data.main.temp_min}°C</p>
+            <div class="humidity_pressure_display">
+            <div class="humidity_display">   
+                <p class="humidity">Humidity</p>
+                <p class="humidity_value" align="center">${data.main.humidity}</p></div> 
+            
+            <div class="pressure_display">   
+                <p class="pressure">Pressure</p>
+                <p class="presssure_value" align="center">${data.main.pressure}</p></div> 
+            </div></div>`;
+                    const icon = document.getElementById("wicon");
+                    city.value="";
+                     switch(data.weather[0].icon){
+                        case "01d":
+                                     icon.src = "icons/clear-day.svg";
+                                     form.style.backgroundImage = "url('images/clearsky.jpg')";
+                                    break;
+
+                        case "01n":
+                                     icon.src = "icons/clear-night.svg";
+                                     form.style.backgroundImage = "url('images/clearnight.avif')";
+                                    break;
+
+                         case "02d":
+                                    icon.src = "icons/mostly-clear-day.svg";
+                                    form.style.backgroundImage = "url('images/fewclouds.avif')";
+                                    break;
+                        case "02n":
+                                    icon.src = "icons/mostly-clear-night.svg";
+                                    form.style.backgroundImage = "url('images/fewcloudsnight.avif')";
+                                    break;
+
+                        case "03d":
+                                    icon.src = "icons/partly-cloudy-day.svg";
+                                    form.style.backgroundImage = "url('images/fewclouds.avif')";
+                                    break;
+
+                        case "03n":
+                                    icon.src = "icons/partly-cloudy-night.svg";
+                                    form.style.backgroundImage = "url('images/fewcloudsnight.avif')";
+                                    break;
+                        case "04d":
+                                     icon.src = "icons/overcast.svg";
+                                     form.style.backgroundImage = "url('images/overcastday.jpg')";
+                                    break;
+
+                        case "04n":
+                                     icon.src = "icons/overcast-night.svg";
+                                     form.style.backgroundImage = "url('images/overcastday.jpg')";
+                                    break;
+
+                         case "10d":
+                                    icon.src = "icons/rain.svg";
+                                    form.style.backgroundImage = "url('images/rainyday.avif')";
+                                    break;
+                        case "10n":
+                                    icon.src = "icons/partly-cloudy-night-rain.svg"
+                                    form.style.backgroundImage = "url('images/rainynight.jpg')";
+                                    break;
+
+                        case "11d":
+                                    icon.src = "icons/thunderstorms-day.svg";
+                                    form.style.backgroundImage = "url('images/thunderstromday.avif')";
+                                    break;
+
+                        case "11n":
+                                    icon.src = "icons/thunderstorms-night.svg";
+                                    form.style.backgroundImage = "url('images/thunderstromday.avif')";
+                                    break;
+                         case "13d":
+                                    icon.src = "icons/partly-cloudy-day-snow.svg";
+                                    form.style.backgroundImage = "url('images/snowday.jpg')";
+                                    break;
+
+                        case "13n":
+                                    icon.src = "icons/mostly-clear-night-snow.svg";
+                                    form.style.backgroundImage = "url('images/snow-night.jpg')";
+                                    break;
+                         case "09d":
+                                    icon.src = "icons/overcast-day-drizzle.svg";
+                                    form.style.backgroundImage = "url('images/drizzleday.jpg')";
+                                    break;
+
+                        case "09n":
+                                    icon.src = "icons/overcast-night-drizzle.svg";
+                                    form.style.backgroundImage = "url('images/drizzlenight.jpg')";
+                                    break;
+                         case "50d":
+                                    icon.src = "icons/fog-day.svg";
+                                    form.style.backgroundImage = "url('images/fog.jpg')";
+                                    break;
+
+                        case "50n":
+                                    icon.src = "icons/fog-night.svg";
+                                    form.style.backgroundImage = "url('images/fog.jpg')";
+                                    break;
+                                    
+
+                }
+
+        })
+    });
+        
+    </script>
+   
+</body>
+</html>
